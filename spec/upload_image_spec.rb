@@ -7,9 +7,6 @@ describe Upload::Image do
     it { is_expected.to be_a Upload::Image }
   end
 
-  describe "upload" do
-    let(:path) { '/path/to/st' }
-    subject { Upload::Image.new(path).upload.status }
-    it { is_expected.to eq :success }
+  describe ".exist" do
   end
 end

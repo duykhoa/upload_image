@@ -1,6 +1,4 @@
 module Upload
-  Response = Struct.new(:status)
-
   class Image
     attr_reader :path
 
