@@ -7,7 +7,9 @@ module Upload
     end
 
     def upload
-      Response::Success.new
+      unless @image.exist?
+        Response::Failure.new("not_exist")
+      end
     end
   end
 end

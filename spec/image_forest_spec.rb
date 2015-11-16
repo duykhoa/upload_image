@@ -9,7 +9,7 @@ describe Upload::ImageForrest do
   describe "#upload" do
     context "image isn't exist" do
       subject { Upload::ImageForrest.new("/path/to/image").upload }
-      it { expect(subject).to be_a Upload::Response::Success }
+      it { expect(subject).to be_a Upload::Response::Failure }
     end
   end
 end

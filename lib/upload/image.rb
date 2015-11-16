@@ -6,8 +6,8 @@ module Upload
       @path = path
     end
 
-    def upload
-      Response.new(:success)
+    def exist?
+      !!File.file?(path)
     end
   end
 end
