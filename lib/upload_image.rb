@@ -1,6 +1,7 @@
-$LOAD_PATH.unshift(File.join(File.dirname(__FILE__), "upload_image"));
+$LOAD_PATH.unshift(File.join(File.dirname(__FILE__), "upload"));
 
-require "version"
+require "upload/version"
+require "upload/image"
 
-module UploadImage
+module Upload
 end
