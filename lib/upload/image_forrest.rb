@@ -11,15 +11,14 @@ module Upload
     end
 
     def upload
-      unless @image.exist?
-        return Response::Failure.new("not_exist")
-      end
+      return Response::Failure.new("not_exist") unless @image.exist?
 
       response = RestClient.post HOST, thumb_width: '500', upload: @image.file
-      if response == 200
-        Reponse::Failure.new(response)
+
+      if response.code == 200
+        Response::Success.new(response)
       else
-        Reponse::Success.new(response)
+        Response::Failure.new(response)
       end
     end
   end
