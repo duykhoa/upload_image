@@ -7,7 +7,7 @@ module Upload
     end
 
     def upload
-      Response.new
+      Response::Success.new
     end
   end
 end
