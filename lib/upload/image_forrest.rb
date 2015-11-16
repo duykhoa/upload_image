@@ -1,5 +1,9 @@
+require 'rest-client'
+
 module Upload
   class ImageForrest
+    HOST = "http://uploads.im/api"
+
     attr_reader :image
 
     def initialize(path)
@@ -8,7 +12,14 @@ module Upload
 
     def upload
       unless @image.exist?
-        Response::Failure.new("not_exist")
+        return Response::Failure.new("not_exist")
+      end
+
+      response = RestClient.post HOST, thumb_width: '500', upload: @image.file
+      if response == 200
+        Reponse::Failure.new(response)
+      else
+        Reponse::Success.new(response)
       end
     end
   end

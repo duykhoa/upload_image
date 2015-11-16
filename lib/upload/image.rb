@@ -9,5 +9,9 @@ module Upload
     def exist?
       !!File.file?(path)
     end
+
+    def file
+      File.new(@path, "rb")
+    end
   end
 end

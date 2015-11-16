@@ -1,6 +1,6 @@
 module Upload
   module Response
-    class Success
+    class Success < Base
     end
   end
 end
