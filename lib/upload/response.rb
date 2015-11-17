@@ -4,7 +4,7 @@ module Upload
       attr :response
 
       def initialize(response, opts={})
-        @response = JSON.parse response
+        @response = JSON.parse response if response
       end
     end
   end

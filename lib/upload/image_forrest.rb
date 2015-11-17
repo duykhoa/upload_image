@@ -37,7 +37,7 @@ module Upload
     #   - If response.code is 200 -> return a Response::Success with response object
     #   - If response.code isn't 200 (4x, 5x) -> return a Response::Failure
     def upload
-      return Response::Failure.new("not_exist") unless @image.exist?
+      return Response::Failure.new(nil, message: "File is not exist") unless @image.exist?
 
       response = RestClient.post HOST, thumb_width: '500', upload: @image.file
 
