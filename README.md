@@ -22,7 +22,11 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```ruby
+  require 'upload_image'
+
+  Upload::ImageForrest.new("/path/to/image").upload
+```
 
 ## Development
 
