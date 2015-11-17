@@ -1,6 +1,8 @@
 module Upload
   module Response
     class Success < Base
+      attr_reader :url, :original_url
+
       def initialize(response, opts={})
         super(response, opts)
 
@@ -11,12 +13,12 @@ module Upload
         #   - Check the data field before return
         #   - Allow user to config the size of thumb
         #
-        @url = response["data"]["thumb_url"]
+        @url = @response["data"]["thumb_url"]
 
         # carefully check the data key here
         # TODO: add condition to check if there is data key
         #
-        @original_url = response["data"]["img_url"]
+        @original_url = @response["data"]["img_url"]
       end
     end
   end
