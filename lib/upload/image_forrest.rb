@@ -4,7 +4,7 @@ module Upload
   class ImageForrest
     HOST = "http://uploads.im/api"
 
-    attr_reader :image
+    attr_reader :image, :thumb_width
 
     # Public: Init a ImageForrest Object
     #
@@ -20,15 +20,18 @@ module Upload
     # TODO:
     #   -  path can be a relative path
     #   -  how about upload a list of images (idea)
-    def initialize(path)
+    def initialize(path, thumb_width = "500")
       @image = Image.new(path)
+      @thumb_width = thumb_width
     end
 
     # Public: upload an image to HOST
     #
+    #  - Default thumb_width is 500
+    #
     # Example
     #
-    #  Upload::ImageForrest.new(path).upload
+    #  Upload::ImageForrest.new(path).upload("700")
     #
     # Returns an Response object
     #   Can be Response::Failure and Response::Success
@@ -39,7 +42,7 @@ module Upload
     def upload
       return Response::Failure.new(nil, message: "File is not exist") unless @image.exist?
 
-      response = RestClient.post HOST, thumb_width: '500', upload: @image.file
+      response = RestClient.post HOST, thumb_width: thumb_width, upload: @image.file
 
       if response.code == 200
         Response::Success.new(response)
