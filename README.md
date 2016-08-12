@@ -25,7 +25,7 @@ Or install it yourself as:
 ```ruby
   require 'upload_image'
 
-  Upload::ImageForrest.new("/path/to/image").upload
+  Upload::ImageForest.new("/path/to/image").upload
 ```
 
 ## Development
