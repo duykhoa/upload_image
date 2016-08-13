@@ -1,16 +1,16 @@
 require "spec_helper"
 
-describe Upload::ImageForrest do
+describe Upload::ImageForest do
   describe ".new" do
-    subject { Upload::ImageForrest.new("/path/to/image") }
-    it { is_expected.to be_a Upload::ImageForrest }
+    subject { Upload::ImageForest.new("/path/to/image") }
+    it { is_expected.to be_a Upload::ImageForest }
   end
 
   describe "#upload" do
-    subject { Upload::ImageForrest.new("/path/to/image").upload }
+    subject { Upload::ImageForest.new("/path/to/image").upload }
 
     context "image isn't exist" do
-      subject { Upload::ImageForrest.new("/path/to/image").upload }
+      subject { Upload::ImageForest.new("/path/to/image").upload }
       it { expect(subject).to be_a Upload::Response::Failure }
       it { expect(subject.message).to eq "File is not exist"}
     end

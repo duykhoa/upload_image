@@ -1,21 +1,21 @@
 require 'rest-client'
 
 module Upload
-  class ImageForrest
+  class ImageForest
     HOST = "http://uploads.im/api"
 
     attr_reader :image
 
-    # Public: Init a ImageForrest Object
+    # Public: Init a ImageForest Object
     #
     # path  - Image's path, right now must be an absolute path
     #
     # Example
     #
     #   path = '/Users/kevin/Desktop/image.jpeg'
-    #   image_forrest = ImageForrest.new(path)
+    #   image_forest = ImageForest.new(path)
     #
-    # Returns an ImageForrest object
+    # Returns an ImageForest object
     #
     # TODO:
     #   -  path can be a relative path
@@ -28,7 +28,7 @@ module Upload
     #
     # Example
     #
-    #  Upload::ImageForrest.new(path).upload
+    #  Upload::ImageForest.new(path).upload
     #
     # Returns an Response object
     #   Can be Response::Failure and Response::Success
