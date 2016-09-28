@@ -2,7 +2,7 @@ require 'rest-client'
 
 module Upload
   class ImageForest
-    HOST = "http://uploads.im/api"
+    HOST = "http://uploads.im/api".freeze
 
     attr_reader :image
 
