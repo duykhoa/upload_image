@@ -2,9 +2,10 @@ require 'rest-client'
 
 module Upload
   class ImageForest
-    HOST = "http://uploads.im/api"
+    HOST = "http://uploads.im/api".freeze
+    SUCCESS_STATUS = 200
 
-    attr_reader :image
+    attr_reader :image, :thumb_width
 
     # Public: Init a ImageForest Object
     #
@@ -20,8 +21,9 @@ module Upload
     # TODO:
     #   -  path can be a relative path
     #   -  how about upload a list of images (idea)
-    def initialize(path)
+    def initialize(path, thumb_width = 500)
       @image = Image.new(path)
+      @thumb_width = thumb_width.to_s
     end
 
     # Public: upload an image to HOST
@@ -39,9 +41,9 @@ module Upload
     def upload
       return Response::Failure.new(nil, message: "File is not exist") unless @image.exist?
 
-      response = RestClient.post HOST, thumb_width: '500', upload: @image.file
+      response = RestClient.post HOST, thumb_width: thumb_width, upload: @image.file
 
-      if response.code == 200
+      if response.code == SUCCESS_STATUS
         Response::Success.new(response)
       else
         Response::Failure.new(response)
